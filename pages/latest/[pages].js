@@ -39,12 +39,19 @@ function Latest() {
   const [content,setContent] = useState([])
   
 
-  const {
-    query: { pages },
-  } = useRouter();
   useEffect(() => {
-    Fetching();
-  }, [pages]);
+  if (id) {
+    const fetchData = async () => {
+      setLoading(true);
+      const res = await fetch(`https://jsonplaceholder.typicode.com/todos/${id}`);
+      const data = await res.json();
+      setTodo(data);
+      setLoading(false);
+    };
+    fetchData();
+  }
+}, [id]);
+
 
   const Fetching = async (e) => {
     let d = await axios.get(
