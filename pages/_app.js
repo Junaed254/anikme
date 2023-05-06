@@ -11,6 +11,19 @@ import { ToastContainer, toast, Flip } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import countapi from "countapi-js";
 
+useEffect(() => {
+  console.log(
+    "%c OTTO ANIME! ",
+    "background: #222; color:#4198db ;font-size:50px"
+  );
+  localStorage.removeItem("persist:root");
+  if (resumeId) if (resumeId) toast.info(<Msg resumeId={resumeId.data} />);
+  countapi
+    .update("axstream.com", "b8156dc8-31b0-4730-8bce-3d467554c469", 1)
+    .then((result) => {
+      setVisit(result.value);
+    });
+}, [resumeId]);
 
 
 import Sidebar from "../components/sidebar/sidebar";
