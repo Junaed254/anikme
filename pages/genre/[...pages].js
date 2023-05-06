@@ -23,14 +23,11 @@ const Genres = () => {
 
 
   useEffect(() => {
-    setLoading(true)
-
-    const pop = fetchData();
-
-    return () => {
-      pop
-    }
-  }, [pages]);
+  let det = fetchData();
+  return () => {
+    det
+  }   
+});
 
   const fetchData = async () => {
     const GENREURL = URL.GENRES + pages.join("/");
